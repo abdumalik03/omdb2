@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+a{
+    text-decoration: none;
+    color: var(--dark-elem-color);
+}
+:root {
+    --bg-main: rgba(255, 255, 255, 0.7);
+    --dark-bg-main: rgba(30, 30, 30, 0.7);
+    --orange: orange;
+
+    --elem-color: rgba(200, 200, 200, 0.7);
+    --dark-elem-color: rgba(20, 20, 20, 0.7);
+
+    --second-elem-color: rgba(200, 200, 200, 0.9);
+    --dark-second-elem-color: rgba(20, 20, 20, 0.8);
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotation-reverse {
+    from {
+        transform: rotate(360deg); /* Меняем направление на обратное */
+    }
+    to {
+        transform: rotate(720deg); /* Возвращаем в начальное состояние */
+    }
+}
+
+@keyframes l1 {
+    0% {background-position: right}
+}
+
+@keyframes appearience {
+    0% {
+        margin-right: 250px;
+        margin-left: -250px;
+        opacity: 0.3;
+    }
+
+    100% {
+        margin: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes bgMove {
+    0%{
+        background-position: left top;
+        background-size: 250%; 
+    }
+
+    35% {
+        background-position: bottom;
+        background-size: 380%; 
+    }
+
+    70% {
+        background-position: right top;
+        background-size: 240%;
+    }
+
+    100%{
+        background-position: left top;
+        background-size: 250%; 
+    }
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('../img/background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 30px;
+
+    transition: 300ms;
+
+    animation: bgMove 300s linear infinite alternate;
+}
+
+header, .searchLine, section {
+    background: var(--bg-main);
+    padding: 5px;
+    border-radius: 15px;
+}
+
+header {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+header .themeChange img {
+    width: 50px;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+nav div {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+nav div.active {
+    background-color: var(--orange);
+}
+
+.searchLine {
+    margin-top: 10px;
+    padding: 10px;
+
+    display: flex;
+    gap: 10px;
+}
+
+.searchLine input {
+    font-size: 24px;
+    padding: 4px;
+    border: 0;
+    outline: 0;
+    background-color: var(--elem-color);
+    border-radius: 5px;
+
+    flex-basis: 100px;
+    flex-grow: 1;
+}
+
+.searchLine button {
+    font-size: 24px;
+    border: 0;
+    background-color: var(--elem-color);
+    padding: 4px;
+    border-radius: 5px;
+}
+
+section {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.movieTitle, .similarLine, .error {
+    background-color: var(--elem-color);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.movieData {
+    margin-top: 10px;
+    background-color: var(--elem-color);
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.movieCaption {
+    flex-basis: 200px;
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.movieCaption img {
+    border-radius: 5px 0 0 5px ;
+    height: 100%;
+    width: 100%;
+}
+
+.movieFullData {
+    flex-basis: 200px;
+    flex-grow: 3;
+    padding: 5px;
+}
+
+.movieLine {
+    background-color: var(--second-elem-color);
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+
+    display: flex;
+}
+
+.lineTitle {
+    font-weight: bold;
+    flex-basis: 10px;
+    flex-grow: 1;
+}
+
+.lineData {
+    flex-basis: 10px;
+    flex-grow: 1;
+}
+
+.similarLine {
+    margin-top: 10px;
+}
+
+.similar {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.similarMovie {
+    position: relative;
+    border-radius: 5px;
+}
+
+.favorite {
+    width: 20px;
+    height: 20px;
+    background-color: var(--elem-color);
+    background-image: url(../img/favBtn.svg);
+    background-size: 20px;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    padding: 5px;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.favorite.active{
+    filter: invert(100%);
+}
+
+.similarMovie img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.similarMovie .title {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+
+    border-radius: 0 0 5px 5px;
+
+    background-color: var(--elem-color);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+.movie {
+    display: none;
+}
+
+.movie.active {
+    display: block;
+    animation: appearience 500ms;
+}
+
+.error {
+    background-color: var(--orange);
+    display: none;
+}
+
+.error.active {
+    display: block;
+}
+
+
+/* DARK THEME */
+
+body[data-theme="dark"] {
+    color: white;
+}
+body[data-theme="dark"] .movieLine,
+body[data-theme="dark"] .favorite{
+    background-color: var(--dark-second-elem-color);
+}
+
+body[data-theme="dark"] .searchLine input,
+body[data-theme="dark"] .searchLine button,
+body[data-theme="dark"] .movieData,
+body[data-theme="dark"] .movieTitle, 
+body[data-theme="dark"] .similarLine,
+body[data-theme="dark"] .similarMovie .title {
+    background-color: var(--dark-elem-color);
+}
+
+body[data-theme="dark"] header, body[data-theme="dark"] .searchLine , body[data-theme="dark"] section {
+    background-color: var(--dark-bg-main);
+}
+
+
+body[data-theme="dark"] .themeChange img{
+    filter: invert(100%);
+    animation-name: rotation;
+    animation-duration: 500ms;
+}
+
+body[data-theme="white"] .themeChange img{
+    animation-name: rotation-reverse;
+    animation-duration: 500ms;
+}
+
+body[data-theme="dark"] .favorite img {
+    filter: invert(100%);
+}
+
+body[data-theme="dark"] .searchLine button {
+    color: white;
+}
+
+body[data-theme="dark"] a {
+    color: var(--elem-color);
+}
+body[data-theme="dark"] input {
+    color: var(--elem-color);
+}
+
+@media (max-width: 500px) {
+    .similar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+}
+
+
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    margin-top: 10px;
+    border-radius: 5px;
+    height: 10px;
+    background: 
+        linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(8,0,0,1) 50%, rgba(0,0,0,1) 58%, rgba(255,255,255,1) 58%, rgba(255,255,255,1) 100%)
+        #f2f2f2;
+    background-size:300% 100%;
+    animation: l1 2s infinite linear;
+}
+
+
+.loader {
+    display: none;
+}
+
+.loader.active {
+    display: block;
+}
